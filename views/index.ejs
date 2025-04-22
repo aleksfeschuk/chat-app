@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="container mx-auto px-4 sm:px-6 lg:px-8 py-6">
+    <h1 class="text-2x1 font-bold mb-4"><%= title %></h1>
+    <p><a href="/new" class="text-blue-500 hover:underline">Add a new message</a></p>
+    <ul id="messages" class="space-y-4">
+        <% messages.forEach((message, index) => { %>
+            <li class="border-b pb-2">
+                <strong class="text-gray-800"><%= message.user %>:</strong> <%= message.text %>
+                <span class="text-gray-500 text-sm">(<%= message.added.toLocalString() %>)</span>
+                <a href="/message/<%= index %>" class="text-blue-500 hover:underline ml-2">Open</a>
+            </li>
+        <% }) %>
+    </ul>
+
+    <script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+</body>
+</html>
