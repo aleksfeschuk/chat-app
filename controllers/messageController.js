@@ -8,6 +8,10 @@ exports.getIndex = (req, res) => {
 };
 
 exports.getNewForm = (req, res) => {
+    req.render('form', { title: 'New Message' });
+};
+
+exports.postNewMessage = (req, res) => {
     const newMessage = {
         id: messages.length + 1,
         text: req.body.messageText, 
@@ -16,7 +20,7 @@ exports.getNewForm = (req, res) => {
     };
     messages.push(newMessage);
     res.redirect('/')
-};
+}
 
 exports.getMessageDetails = (req, res) => {
     const message = messages.find((msg) => msg.id === parseInt(req.params.id));
